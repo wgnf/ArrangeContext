@@ -18,7 +18,6 @@ namespace ArrangeContext.Moq
         {
             try
             {
-                // in other cases we use Moq to create a Mocked instance
                 // NOTE: We have to use some workaround with reflection here
                 // because we're creating a Mock<T> at runtime and
                 // the generic Type is not known at compile-time
