@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ArrangeContext.Core.Helper.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
-using ArrangeContext.Core.Helper.Contracts;
 
 namespace ArrangeContext.Core.Helper
 {

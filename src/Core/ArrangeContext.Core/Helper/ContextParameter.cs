@@ -5,21 +5,25 @@ namespace ArrangeContext.Core.Helper
 {
     // simple POCO
     [ExcludeFromCodeCoverage]
-    internal class ContextParameter
+    public class ContextParameter
     {
-        public ContextParameter(Type parameterType, string name, object instance)
+        public ContextParameter(
+            Type parameterType, 
+            string name, 
+            ContextInstance instance)
         {
             if (string.IsNullOrWhiteSpace(name))
                 throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
-            Type = parameterType ?? throw new ArgumentNullException(nameof(parameterType));
             Name = name;
-            Instance = instance;
+
+            Type = parameterType ?? throw new ArgumentNullException(nameof(parameterType));
+            Instance = instance ?? throw new ArgumentNullException(nameof(instance));
         }
 
         public Type Type { get; }
 
         public string Name { get; }
 
-        public object Instance { get; set; }
+        public ContextInstance Instance { get; set; }
     }
 }
