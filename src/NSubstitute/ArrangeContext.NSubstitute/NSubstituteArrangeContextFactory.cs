@@ -19,11 +19,11 @@ namespace ArrangeContext.NSubstitute
                 var mockedInstance = Substitute.For(new[] { parameter.ParameterType }, Array.Empty<object>());
                 return new ContextInstance(mockedInstance, mockedInstance);
             }
-            // TODO: Information about inaccessible things
-            // with fix: internals visible to DynamicProxyGenAssembly2
-            catch (Exception)
+            catch (Exception ex)
             {
-                return new ContextInstance(null, null);
+                throw new InvalidOperationException($"There was an issue creating a mock for {parameter.ParameterType.Name}." +
+                    "This is possibly due to the Type not being accessible. Consider making it internal/public and/or using [assembly:InternalsVisibleTo(\"DynamicProxyGenAssembly2\")]!" +
+                    "For more information refer to the InnerException of this Exception!", ex);
             }
         }
     }
