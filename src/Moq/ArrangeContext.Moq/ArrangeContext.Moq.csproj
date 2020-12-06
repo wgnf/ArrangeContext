@@ -2,7 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <UserSecretsId>70e483ad-d393-4a8e-9ac9-ff22a5b211c1</UserSecretsId>
+
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <ItemGroup>
