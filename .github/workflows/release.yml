@@ -5,12 +5,12 @@ on:
     - master
     - main
   tags:
-    - "**.**.**" # Semantic Versioning like "11.22.33"
+    - v**.**.** # Semantic Versioning like "v11.22.33"
 
 jobs:
   publish:
     name: Build And Test And Publish
-    runs-on: ubuntu-latest
+    runs-on: windows-2019
     steps:
     - uses: actions/checkout@v2
     - name: Setup .NET Core
@@ -18,4 +18,4 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Run Publish using Nuke
-      run: ./build.sh -Target Publish -Configuration Release
+      run: ./build.ps1 -Target Publish -Configuration Release
