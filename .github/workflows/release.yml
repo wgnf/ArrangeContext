@@ -1,11 +1,12 @@
 name: "Release"
 
 on:
-  branches:
-    - master
-    - main
-  tags:
-    - v**.**.** # Semantic Versioning like "v11.22.33"
+  push:
+    branches:
+      - master
+      - main
+    tags:
+      - v**.**.** # Semantic Versioning like "v11.22.33"
 
 jobs:
   publish:
