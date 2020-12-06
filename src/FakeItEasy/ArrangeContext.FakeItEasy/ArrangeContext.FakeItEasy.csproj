@@ -5,10 +5,34 @@
 
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+		
+		<PackageId>ArrangeContext.FakeItEasy</PackageId>
+		<Description>[FAKEITEASY] .NET C#: Arrange Context is a simple Tool to automatically initialize your system-under-test with mocked instances. </Description>
+
+		<Authors>Martin Wagenführ</Authors>
+		<RepositoryUrl>https://github.com/mwagenfuehr/ArrangeContext</RepositoryUrl>
+		<PackageTags>tdd unittesting mocks mocking faking stubbing substitution fakeiteasy</PackageTags>
+		<PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+		<PackageIcon>ArrangeContextLogo.png</PackageIcon>
+
+		<ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+		<PublishRepositoryUrl>true</PublishRepositoryUrl>
+		<EmbedUntrackedSources>true</EmbedUntrackedSources>
+		<IncludeSymbols>true</IncludeSymbols>
+		<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="FakeItEasy" Version="6.0.0" />
+		<None Include="../../../res/ArrangeContextLogo.png" Pack="true" Visible="false" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FakeItEasy" Version="6.0.0" />
+
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
 	</ItemGroup>
 
 	<ItemGroup>

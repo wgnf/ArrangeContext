@@ -23,15 +23,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangeContext.NSubstitute.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RhinoMocks", "RhinoMocks", "{8B57D9E7-CF33-4009-AD2A-3D0F8BAF3E2B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrangeContext.RhinoMocks", "RhinoMocks\ArrangeContext.RhinoMocks\ArrangeContext.RhinoMocks.csproj", "{D992FF0B-8401-412B-AB9B-D5DF65979450}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangeContext.RhinoMocks", "RhinoMocks\ArrangeContext.RhinoMocks\ArrangeContext.RhinoMocks.csproj", "{D992FF0B-8401-412B-AB9B-D5DF65979450}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrangeContext.RhinoMocks.Tests", "RhinoMocks\ArrangeContext.RhinoMocks.Tests\ArrangeContext.RhinoMocks.Tests.csproj", "{DBDC96E3-7648-4600-B118-84F34F5BE033}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangeContext.RhinoMocks.Tests", "RhinoMocks\ArrangeContext.RhinoMocks.Tests\ArrangeContext.RhinoMocks.Tests.csproj", "{DBDC96E3-7648-4600-B118-84F34F5BE033}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FakeItEasy", "FakeItEasy", "{AC8F505F-C282-41E1-9112-05F562C0891B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrangeContext.FakeItEasy", "FakeItEasy\ArrangeContext.FakeItEasy\ArrangeContext.FakeItEasy.csproj", "{CDDD2F97-6FBE-4807-B84F-A08B12EE2C0F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangeContext.FakeItEasy", "FakeItEasy\ArrangeContext.FakeItEasy\ArrangeContext.FakeItEasy.csproj", "{CDDD2F97-6FBE-4807-B84F-A08B12EE2C0F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrangeContext.FakeItEasy.Tests", "FakeItEasy\ArrangeContext.FakeItEasy.Tests\ArrangeContext.FakeItEasy.Tests.csproj", "{C7D60FC6-A770-4191-AFCB-29E48176C1CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangeContext.FakeItEasy.Tests", "FakeItEasy\ArrangeContext.FakeItEasy.Tests\ArrangeContext.FakeItEasy.Tests.csproj", "{C7D60FC6-A770-4191-AFCB-29E48176C1CD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangeContext.Build", "..\build\ArrangeContext.Build.csproj", "{D1A5FDFB-3A00-4D98-BEB4-72C110E00661}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -79,6 +81,8 @@ Global
 		{C7D60FC6-A770-4191-AFCB-29E48176C1CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C7D60FC6-A770-4191-AFCB-29E48176C1CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C7D60FC6-A770-4191-AFCB-29E48176C1CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D1A5FDFB-3A00-4D98-BEB4-72C110E00661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1A5FDFB-3A00-4D98-BEB4-72C110E00661}.Release|Any CPU.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

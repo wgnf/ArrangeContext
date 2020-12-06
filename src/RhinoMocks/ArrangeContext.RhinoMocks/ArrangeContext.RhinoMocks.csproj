@@ -5,10 +5,34 @@
 
 	<GenerateDocumentationFile>true</GenerateDocumentationFile>
 	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+	  <PackageId>ArrangeContext.RhinoMocks</PackageId>
+	  <Description>[RHINOMOCKS] .NET C#: Arrange Context is a simple Tool to automatically initialize your system-under-test with mocked instances. </Description>
+
+	  <Authors>Martin Wagenführ</Authors>
+	  <RepositoryUrl>https://github.com/mwagenfuehr/ArrangeContext</RepositoryUrl>
+	  <PackageTags>tdd unittesting mocks mocking faking stubbing substitution rhinomocks</PackageTags>
+	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+	  <PackageIcon>ArrangeContextLogo.png</PackageIcon>
+
+	  <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
+	  <EmbedUntrackedSources>true</EmbedUntrackedSources>
+	  <IncludeSymbols>true</IncludeSymbols>
+	  <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+	<ItemGroup>
+		<None Include="../../../res/ArrangeContextLogo.png" Pack="true" Visible="false" PackagePath="" />
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="RhinoMocks" Version="3.6.0" />
+
+	  <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
   </ItemGroup>
 
   <ItemGroup>

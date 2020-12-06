@@ -3,12 +3,36 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
 	  
-	<GenerateDocumentationFile>true</GenerateDocumentationFile>
-	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+
+    <PackageId>ArrangeContext.NSubstitute</PackageId>
+    <Description>[NSUBSTITUTE] .NET C#: Arrange Context is a simple Tool to automatically initialize your system-under-test with mocked instances. </Description>
+
+    <Authors>Martin Wagenführ</Authors>
+    <RepositoryUrl>https://github.com/mwagenfuehr/ArrangeContext</RepositoryUrl>
+    <PackageTags>tdd unittesting mocks mocking faking stubbing substitution nsubstitute</PackageTags>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageIcon>ArrangeContextLogo.png</PackageIcon>
+
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="../../../res/ArrangeContextLogo.png" Pack="true" Visible="false" PackagePath="" />
+    </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="NSubstitute" Version="4.0.0" />
+
+	  <PackageReference Include="Microsoft.SourceLink.GitHub" Version="1.0.0">
+		  <PrivateAssets>all</PrivateAssets>
+		  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	  </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
