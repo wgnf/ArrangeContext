@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace ArrangeContext.Core.Helper.Contracts
 {
-    public interface IReflectionHelper
+    internal interface IReflectionHelper
     {
         ConstructorInfo GetConstructor<T>() where T : class;
         IEnumerable<ParameterInfo> GetParametersFor(ConstructorInfo constructor);

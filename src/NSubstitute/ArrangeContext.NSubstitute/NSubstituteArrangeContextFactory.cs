@@ -12,9 +12,7 @@ namespace ArrangeContext.NSubstitute
         {
         }
 
-        protected override ContextInstance GetMockedInstanceFromProvider(
-            ParameterInfo parameter, 
-            bool mockOptionalParameters)
+        protected override ContextInstance GetMockedInstanceFromProvider(ParameterInfo parameter)
         {
             try
             {

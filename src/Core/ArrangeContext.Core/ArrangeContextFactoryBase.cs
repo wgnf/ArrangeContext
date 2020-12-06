@@ -5,16 +5,30 @@ using System.Reflection;
 
 namespace ArrangeContext.Core
 {
+    /// <summary>
+    ///     Base-Class for an Arrange-Factory
+    /// </summary>
     public abstract class ArrangeContextFactoryBase
     {
+        /// <summary>
+        ///     Creates a new instance of <see cref="ArrangeContextFactoryBase"/> accepting the <see cref="ArrangeContext"/> to use
+        /// </summary>
+        /// <param name="context">The <see cref="ArrangeContext"/> to use</param>
         public ArrangeContextFactoryBase(
             ArrangeContext context)
         {
             Context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
+        /// <summary>
+        ///     The underlying <see cref="ArrangeContext"/> for this Factory
+        /// </summary>
         public ArrangeContext Context { get; }
 
+        /// <summary>
+        ///     Uses the underlying information of <see cref="ArrangeContext.ContextParameters"/> to create the instance of the system-under-test
+        /// </summary>
+        /// <returns>The instance of the system-under-test</returns>
         public object Build()
         {
             ConsiderInitialization();
@@ -28,6 +42,11 @@ namespace ArrangeContext.Core
             return instance;
         }
 
+        /// <summary>
+        ///     Gets a parameter indicated by <typeparamref name="T"/> from the underlying <see cref="Context"/>
+        /// </summary>
+        /// <typeparam name="T">Type that indicates the parameter to get</typeparam>
+        /// <returns>The <see cref="ContextParameter"/> that was found using <typeparamref name="T"/></returns>
         public ContextParameter GetParameter<T>()
         {
             ConsiderInitialization();
@@ -39,6 +58,11 @@ namespace ArrangeContext.Core
             return parameter;
         }
 
+        /// <summary>
+        ///     Gets a parameter by name
+        /// </summary>
+        /// <param name="parameterName">The name for the parameter to find</param>
+        /// <returns>The <see cref="ContextParameter"/> that was found using the <paramref name="parameterName"/></returns>
         public ContextParameter GetParameter(string parameterName)
         {
             ConsiderInitialization();
@@ -51,6 +75,12 @@ namespace ArrangeContext.Core
             return parameter;
         }
 
+        /// <summary>
+        ///     Replaces an already existing instance with another instance
+        /// </summary>
+        /// <param name="parameterToReplace"><see cref="ContextParameter"/> that should be replaced</param>
+        /// <param name="instance">The new instance for the <see cref="ContextParameter"/></param>
+        /// <param name="mockedInstance">The new mocked instance for the <see cref="ContextParameter"/></param>
         public void ReplaceInstance(
             ContextParameter parameterToReplace,
             object instance,
@@ -67,6 +97,13 @@ namespace ArrangeContext.Core
                 new ContextInstance(instance, mockedInstance));
             Context.ContextParameters.Insert(index, newParameter);
         }
+
+        /// <summary>
+        ///     Abstract Method that gets the mocked instance of a <see cref="ParameterInfo"/> from different Mock-Frameworks
+        /// </summary>
+        /// <param name="parameter">The <see cref="ParameterInfo"/> to get the mocked instance for</param>
+        /// <returns>A <see cref="ContextInstance"/> containing an instance and a mocked instance</returns>
+        protected abstract ContextInstance GetMockedInstanceFromProvider(ParameterInfo parameter);
 
         private void ConsiderInitialization()
         {
@@ -109,7 +146,7 @@ namespace ArrangeContext.Core
                     return new ContextInstance(instance, null);
                 }
 
-                return GetMockedInstanceFromProvider(parameter, mockOptionalParameters);
+                return GetMockedInstanceFromProvider(parameter);
             }
             catch (Exception)
             {
@@ -117,9 +154,5 @@ namespace ArrangeContext.Core
                 return new ContextInstance(null, null);
             }
         }
-
-        protected abstract ContextInstance GetMockedInstanceFromProvider(
-            ParameterInfo parameter,
-            bool mockOptionalParameters);
     }
 }
