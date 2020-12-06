@@ -148,10 +148,9 @@ namespace ArrangeContext.Core
 
                 return GetMockedInstanceFromProvider(parameter);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                // TODO: Or should we better throw here?
-                return new ContextInstance(null, null);
+                throw new MockingFailedException(parameter.Name, ex);
             }
         }
     }
