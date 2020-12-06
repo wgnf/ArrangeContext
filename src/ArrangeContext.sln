@@ -17,9 +17,15 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangeContext.Moq", "Moq\A
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangeContext.Moq.Tests", "Moq\ArrangeContext.Moq.Tests\ArrangeContext.Moq.Tests.csproj", "{3F67AC4D-9AD3-4656-8A21-C4607E0B6F45}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrangeContext.NSubstitute", "NSubstitute\ArrangeContext.NSubstitute\ArrangeContext.NSubstitute.csproj", "{CD6B817D-9A61-48E5-B007-C1DA7DD3C78D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangeContext.NSubstitute", "NSubstitute\ArrangeContext.NSubstitute\ArrangeContext.NSubstitute.csproj", "{CD6B817D-9A61-48E5-B007-C1DA7DD3C78D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrangeContext.NSubstitute.Tests", "NSubstitute\ArrangeContext.NSubstitute.Tests\ArrangeContext.NSubstitute.Tests.csproj", "{F0A16052-E144-4E80-9538-C560C8551D5B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrangeContext.NSubstitute.Tests", "NSubstitute\ArrangeContext.NSubstitute.Tests\ArrangeContext.NSubstitute.Tests.csproj", "{F0A16052-E144-4E80-9538-C560C8551D5B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "RhinoMocks", "RhinoMocks", "{8B57D9E7-CF33-4009-AD2A-3D0F8BAF3E2B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrangeContext.RhinoMocks", "RhinoMocks\ArrangeContext.RhinoMocks\ArrangeContext.RhinoMocks.csproj", "{D992FF0B-8401-412B-AB9B-D5DF65979450}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrangeContext.RhinoMocks.Tests", "RhinoMocks\ArrangeContext.RhinoMocks.Tests\ArrangeContext.RhinoMocks.Tests.csproj", "{DBDC96E3-7648-4600-B118-84F34F5BE033}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +57,14 @@ Global
 		{F0A16052-E144-4E80-9538-C560C8551D5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F0A16052-E144-4E80-9538-C560C8551D5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F0A16052-E144-4E80-9538-C560C8551D5B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D992FF0B-8401-412B-AB9B-D5DF65979450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D992FF0B-8401-412B-AB9B-D5DF65979450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D992FF0B-8401-412B-AB9B-D5DF65979450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D992FF0B-8401-412B-AB9B-D5DF65979450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DBDC96E3-7648-4600-B118-84F34F5BE033}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DBDC96E3-7648-4600-B118-84F34F5BE033}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DBDC96E3-7648-4600-B118-84F34F5BE033}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DBDC96E3-7648-4600-B118-84F34F5BE033}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -62,6 +76,8 @@ Global
 		{3F67AC4D-9AD3-4656-8A21-C4607E0B6F45} = {56B07962-01C3-48D5-B795-C29C2BCAB41B}
 		{CD6B817D-9A61-48E5-B007-C1DA7DD3C78D} = {F29B8206-A8CC-4264-B4C9-BB19F85CEC7F}
 		{F0A16052-E144-4E80-9538-C560C8551D5B} = {F29B8206-A8CC-4264-B4C9-BB19F85CEC7F}
+		{D992FF0B-8401-412B-AB9B-D5DF65979450} = {8B57D9E7-CF33-4009-AD2A-3D0F8BAF3E2B}
+		{DBDC96E3-7648-4600-B118-84F34F5BE033} = {8B57D9E7-CF33-4009-AD2A-3D0F8BAF3E2B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E8E0B819-E334-4523-B96A-0D4388FE99EA}

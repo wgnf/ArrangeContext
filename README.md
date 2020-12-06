@@ -1,4 +1,5 @@
 # ArrangeContext
+
 .NET C#: Simple Tool to automatically initialize your system-under-test with mocked instances.
 
 This'll turn something horrible like this:
@@ -23,10 +24,11 @@ var systemUnderTest = new ArrangeContext<SystemUnderTest>().Build();
 Additionally giving you the extra comfort of not needing to update the test-classes when you add a new parameter to your System-Under-Test:  
 If you add a new Parameter with `ISomeService5` to your `SystemUnderTest`, in the "default"-approach you'd have to add a new line `var mock5 = new Mock<ISomeService5>()` to the arrangement of your `SystemUnderTest`!
 
-## Supported mocking Frameworks:
+## Supported mocking Frameworks
 
 - [Moq](https://github.com/moq/moq4)
 - [NSubstitute](https://github.com/nsubstitute/NSubstitute)
+- [RhinoMocks](https://github.com/hibernating-rhinos/rhino-mocks)
 
 ---
 
