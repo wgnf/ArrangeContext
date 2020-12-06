@@ -29,6 +29,7 @@ If you add a new Parameter with `ISomeService5` to your `SystemUnderTest`, in th
 - [Moq](https://github.com/moq/moq4)
 - [NSubstitute](https://github.com/nsubstitute/NSubstitute)
 - [RhinoMocks](https://github.com/hibernating-rhinos/rhino-mocks)
+- [FakeItEasy](https://github.com/FakeItEasy/FakeItEasy)
 
 ---
 

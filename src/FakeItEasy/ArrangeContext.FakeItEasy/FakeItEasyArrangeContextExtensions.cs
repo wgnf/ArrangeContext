@@ -1,9 +1,9 @@
-﻿namespace ArrangeContext.NSubstitute
+﻿namespace ArrangeContext.FakeItEasy
 {
     /// <summary>
     ///     Extensions for ArrangeContext.NSubstitute
     /// </summary>
-    public static class NSubstituteArrangeContextExtensions
+    public static class FakeItEasyArrangeContextExtensions
     {
         /// <summary>
         ///     Replaces the previously generated parameter indicated by <typeparamref name="T"/> with the provided <paramref name="mockedInstance"/>
@@ -16,7 +16,7 @@
             T mockedInstance)
             where T : class
         {
-            var factory = new NSubstituteArrangeContextFactory(context);
+            var factory = new FakeItEasyArrangeContextFactory(context);
 
             var parameter = factory.GetParameter<T>();
             factory.ReplaceInstance(parameter, mockedInstance, mockedInstance);
@@ -35,7 +35,7 @@
             string parameterName)
             where T : class
         {
-            var factory = new NSubstituteArrangeContextFactory(context);
+            var factory = new FakeItEasyArrangeContextFactory(context);
 
             var parameter = factory.GetParameter(parameterName);
             factory.ReplaceInstance(parameter, mockedInstance, mockedInstance);
@@ -51,7 +51,7 @@
             this Core.ArrangeContext context)
             where T : class
         {
-            var factory = new NSubstituteArrangeContextFactory(context);
+            var factory = new FakeItEasyArrangeContextFactory(context);
 
             var parameter = factory.GetParameter<T>();
             return (T)parameter.Instance.MockedInstance;
@@ -69,7 +69,7 @@
             string parameterName)
             where T : class
         {
-            var factory = new NSubstituteArrangeContextFactory(context);
+            var factory = new FakeItEasyArrangeContextFactory(context);
 
             var parameter = factory.GetParameter(parameterName);
             return (T)parameter.Instance.MockedInstance;
@@ -84,7 +84,7 @@
         public static TContext Build<TContext>(
             this Core.ArrangeContext<TContext> context) where TContext : class
         {
-            var factory = new NSubstituteArrangeContextFactory(context);
+            var factory = new FakeItEasyArrangeContextFactory(context);
             return (TContext)factory.Build();
         }
     }

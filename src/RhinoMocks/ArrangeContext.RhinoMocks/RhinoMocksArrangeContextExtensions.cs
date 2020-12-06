@@ -13,7 +13,7 @@
         /// <param name="mockedInstance">The new instance for the parameter with the type <typeparamref name="T"/></param>
         public static void Use<T>(
             this Core.ArrangeContext context, 
-            object mockedInstance)
+            T mockedInstance)
             where T : class
         {
             var factory = new RhinoMocksArrangeContextFactory(context);
@@ -32,7 +32,7 @@
         public static void Use<T>(
             this Core.ArrangeContext context,
             string parameterName,
-            object mockedInstance)
+            T mockedInstance)
             where T : class
         {
             var factory = new RhinoMocksArrangeContextFactory(context);
