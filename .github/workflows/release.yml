@@ -1,0 +1,21 @@
+name: "Release"
+
+on:
+  branches:
+    - master
+    - main
+  tags:
+    - **.**.** # Semantic Versioning like "11.22.33"
+
+jobs:
+  publish:
+    name: Build And Test And Publish
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 5.0.0
+    - name: Run Publish using Nuke
+      run: ./build.sh -Target Publish -Configuration Release
