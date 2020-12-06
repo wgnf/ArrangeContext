@@ -11,6 +11,6 @@ jobs:
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
-        dotnet-version: 5.0.0
+        dotnet-version: 3.1.101
     - name: Run Build and Test using Nuke
       run: ./build.sh -Target Test -Configuration Release
