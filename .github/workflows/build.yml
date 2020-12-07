@@ -8,11 +8,8 @@ jobs:
     runs-on: windows-2019
     steps:
     - uses: actions/checkout@v2
-      with:
-        # pulls all commits        
-        fetch-depth: "0"
-      # pulls all tags
-    - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
+    # Additional fetch to get all commits and tags
+    - run: git fetch --prune --unshallow --all
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
