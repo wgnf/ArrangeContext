@@ -9,8 +9,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
       with:
-        all_commits: true
-        all_tags: true
+        # pulls all commits        
+        fetch-depth: "0"
+      # pulls all tags
+    - run: git fetch --depth=1 origin +refs/tags/*:refs/tags/*
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
