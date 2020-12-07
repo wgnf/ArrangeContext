@@ -13,4 +13,4 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Run Build and Test using Nuke
-      run: ./build.ps1 -Target Test -Configuration Release
+      run: ./build.ps1 -Target Test -Configuration Release -Verbosity Verbose
