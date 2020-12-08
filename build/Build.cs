@@ -66,6 +66,7 @@ public class Build : NukeBuild
         .Executes(() =>
         {
             DotNetTest(s => s
+                .SetConfiguration(Configuration)
                 .SetProjectFile(Solution)
                 .EnableNoRestore()
                 .EnableNoBuild());
@@ -88,6 +89,7 @@ public class Build : NukeBuild
                     .SetProject(packProject.Path)
                     .SetVersion(GitVersion.NuGetVersionV2)
                     .SetOutputDirectory(BuildDirectory / ".output/Packages")
+                    .SetConfiguration(Configuration)
                     .EnableIncludeSource()
                     .EnableIncludeSymbols()
                     .EnableNoBuild()
