@@ -8,7 +8,6 @@ using Nuke.Common.Tools.DotNet;
 using Nuke.Common.Tools.GitVersion;
 using Nuke.Common.Utilities.Collections;
 using static Nuke.Common.IO.FileSystemTasks;
-using static Nuke.Common.IO.PathConstruction;
 using static Nuke.Common.Tools.DotNet.DotNetTasks;
 
 [CheckBuildProjectConfigurations]
@@ -83,17 +82,17 @@ public class Build : NukeBuild
                 .Where(p => !p.Name.Equals("ArrangeContext.Build"));
 
             foreach (var packProject in packProjects)
-                using (var block = Logger.Block($"Packing {packProject.Name}"))
-                {
-                    DotNetPack(s => s
-                        .SetProject(packProject.Path)
-                        .SetVersion(GitVersion.NuGetVersionV2)
-                        .SetOutputDirectory(BuildDirectory / ".output/Packages")
-                        .EnableIncludeSource()
-                        .EnableIncludeSymbols()
-                        .EnableNoBuild()
-                        .EnableNoRestore());
-                }
+            {
+                using var block = Logger.Block($"Packing {packProject.Name}");
+                DotNetPack(s => s
+                    .SetProject(packProject.Path)
+                    .SetVersion(GitVersion.NuGetVersionV2)
+                    .SetOutputDirectory(BuildDirectory / ".output/Packages")
+                    .EnableIncludeSource()
+                    .EnableIncludeSymbols()
+                    .EnableNoBuild()
+                    .EnableNoRestore());
+            }
         });
 
     Target Publish => _ => _
@@ -103,29 +102,29 @@ public class Build : NukeBuild
 
         .Executes(() =>
         {
-            var nugetSource = "https://api.nuget.org/v3/index.json";
-            var githubSource = "https://nuget.pkg.github.com/OWNER/index.json";
+            const string nugetSource = "https://api.nuget.org/v3/index.json";
+            const string githubSource = "https://nuget.pkg.github.com/OWNER/index.json";
 
             var packages = (BuildDirectory / ".output/Packages").GlobFiles("*.nupkg", "*.snupkg");
 
             foreach (var package in packages)
-                using (var block = Logger.Block($"Publishing {package}"))
-                {
-                    Logger.Info("... to NuGet");
-                    DotNetNuGetPush(s => s
-                        .SetApiKey(NuGetApiKey)
-                        .SetSymbolApiKey(NuGetApiKey)
-                        .SetTargetPath(package)
-                        .SetSource(nugetSource)
-                        .SetSymbolSource(nugetSource));
+            {
+                using var block = Logger.Block($"Publishing {package}");
+                Logger.Info("... to NuGet");
+                DotNetNuGetPush(s => s
+                    .SetApiKey(NuGetApiKey)
+                    .SetSymbolApiKey(NuGetApiKey)
+                    .SetTargetPath(package)
+                    .SetSource(nugetSource)
+                    .SetSymbolSource(nugetSource));
 
-                    Logger.Info("... to GitHub");
-                    DotNetNuGetPush(s => s
-                        .SetApiKey(GitHubApiKey)
-                        .SetSymbolApiKey(GitHubApiKey)
-                        .SetTargetPath(package)
-                        .SetSource(githubSource)
-                        .SetSymbolSource(githubSource));
-                }
+                Logger.Info("... to GitHub");
+                DotNetNuGetPush(s => s
+                    .SetApiKey(GitHubApiKey)
+                    .SetSymbolApiKey(GitHubApiKey)
+                    .SetTargetPath(package)
+                    .SetSource(githubSource)
+                    .SetSymbolSource(githubSource));
+            }
         });
 }
