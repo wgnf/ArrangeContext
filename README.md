@@ -1,4 +1,6 @@
 # ArrangeContext
+[![Latest Release Core](https://img.shields.io/nuget/v/ArrangeContext.Core?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Core/)
+[![Downloads Core](https://img.shields.io/nuget/dt/ArrangeContext.Core?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Core/)
 
 .NET C#: Simple Tool to automatically initialize your system-under-test with mocked instances.
 
@@ -26,10 +28,12 @@ If you add a new Parameter with `ISomeService5` to your `SystemUnderTest`, in th
 
 ## Supported mocking Frameworks
 
-- [Moq](https://github.com/moq/moq4)
-- [NSubstitute](https://github.com/nsubstitute/NSubstitute)
-- [RhinoMocks](https://github.com/hibernating-rhinos/rhino-mocks)
-- [FakeItEasy](https://github.com/FakeItEasy/FakeItEasy)
+|Framework ||
+|----------|---------|
+|[Moq](https://github.com/moq/moq4)|[![Latest Release Moq](https://img.shields.io/nuget/v/ArrangeContext.Moq?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Moq/) [![Downloads Moq](https://img.shields.io/nuget/dt/ArrangeContext.Moq?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Moq/)|
+|[NSubstitute](https://github.com/nsubstitute/NSubstitute)|[![Latest Release NSubstitute](https://img.shields.io/nuget/v/ArrangeContext.NSubstitute?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.NSubstitute/) [![Downloads NSubstitute](https://img.shields.io/nuget/dt/ArrangeContext.NSubstitute?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.NSubstitute/)|
+|[RhinoMocks](https://github.com/hibernating-rhinos/rhino-mocks)|[![Latest Release Rhino Mocks](https://img.shields.io/nuget/v/ArrangeContext.RhinoMocks?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.RhinoMocks/) [![Downloads Rhino Mocks](https://img.shields.io/nuget/dt/ArrangeContext.RhinoMocks?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.RhinoMocks/)|
+|[FakeItEasy](https://github.com/FakeItEasy/FakeItEasy)|[![Latest Release FakeItEasy](https://img.shields.io/nuget/v/ArrangeContext.FakeItEasy?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.FakeItEasy/) [![Downloads FakeItEasy](https://img.shields.io/nuget/dt/ArrangeContext.FakeItEasy?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.FakeItEasy/)|
 
 ---
 
