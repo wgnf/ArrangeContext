@@ -15,4 +15,4 @@ jobs:
       with:
         dotnet-version: 3.1.101
     - name: Run Build and Test using Nuke
-      run: ./build.ps1 -Target Test -Configuration Release --nuget_api_key ${{ secrets.NUGET_API_KEY }} --gh_api_key ${{ secrets.GITHUB_API_KEY }}
+      run: ./build.ps1 -Target Test -Configuration Release
