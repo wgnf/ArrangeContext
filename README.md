@@ -2,7 +2,8 @@
 [![Latest Release Core](https://img.shields.io/nuget/v/ArrangeContext.Core?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Core/)
 [![Downloads Core](https://img.shields.io/nuget/dt/ArrangeContext.Core?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Core/)
 
-.NET C#: Simple Tool to automatically initialize your system-under-test with mocked instances.
+.NET C#: Simple Tool to automatically initialize your system-under-test with mocked instances.  
+Inspired by [NEdifis](https://github.com/awesome-inc/NEdifis) and [AutoFixture](https://github.com/AutoFixture/AutoFixture)
 
 This'll turn something horrible like this:
 
