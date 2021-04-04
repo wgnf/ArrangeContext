@@ -10,7 +10,7 @@
     <Description>[MOQ] .NET C#: Arrange Context is a simple Tool to automatically initialize your system-under-test with mocked instances. </Description>
 
     <Authors>Martin Wagenführ</Authors>
-    <RepositoryUrl>https://github.com/mwagenfuehr/ArrangeContext</RepositoryUrl>
+    <RepositoryUrl>https://github.com/wgnf/ArrangeContext</RepositoryUrl>
     <PackageTags>tdd unittesting mocks mocking faking stubbing substitution moq</PackageTags>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageIcon>ArrangeContextLogo.png</PackageIcon>
