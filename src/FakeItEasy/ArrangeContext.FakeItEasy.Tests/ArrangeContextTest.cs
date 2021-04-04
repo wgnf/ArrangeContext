@@ -1,5 +1,4 @@
-﻿using ArrangeContext.Core;
-using FakeItEasy;
+﻿using FakeItEasy;
 using FluentAssertions;
 using NUnit.Framework;
 

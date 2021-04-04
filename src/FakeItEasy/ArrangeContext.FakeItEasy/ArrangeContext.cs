@@ -1,19 +1,26 @@
-﻿using ArrangeContext.Core.Helper;
+﻿using ArrangeContext.Core;
+using ArrangeContext.Core.Helper;
 using FakeItEasy;
 using System;
-using System.Reflection;
 using System.Linq;
+using System.Reflection;
 
 namespace ArrangeContext.FakeItEasy
 {
-    internal class FakeItEasyArrangeContextFactory : Core.ArrangeContextFactoryBase
+    /// <summary>
+    ///     The Arrange Context for <typeparamref name="TContext"/>
+    /// </summary>
+    /// <typeparam name="TContext">The Context to work on</typeparam>
+    public class ArrangeContext<TContext> : ArrangeContextBaseWithBaseMethods<TContext> where TContext : class
     {
-        public FakeItEasyArrangeContextFactory(
-            Core.ArrangeContext context) : base(context)
+        /// <inheritdoc/>
+        public ArrangeContext(bool includeOptionalParameters = true)
+            : base(includeOptionalParameters)
         {
         }
 
-        protected override ContextInstance GetMockedInstanceFromProvider(ParameterInfo parameter)
+        /// <inheritdoc/>
+        protected override ContextInstance CreateMockedInstance(ParameterInfo parameter)
         {
             try
             {

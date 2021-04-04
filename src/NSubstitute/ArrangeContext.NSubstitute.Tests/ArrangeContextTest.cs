@@ -1,5 +1,4 @@
-﻿using ArrangeContext.Core;
-using FluentAssertions;
+﻿using FluentAssertions;
 using NSubstitute;
 using NUnit.Framework;
 
