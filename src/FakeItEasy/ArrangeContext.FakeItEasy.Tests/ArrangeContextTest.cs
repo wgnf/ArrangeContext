@@ -10,7 +10,7 @@ namespace ArrangeContext.FakeItEasy.Tests
         [Test]
         public void Usage_Test()
         {
-            var context = new ArrangeContext<TestClass>();
+            var context = ArrangeContext<TestClass>.Create();
             var instance = context.Build();
 
             const string expected = "something";
