@@ -132,8 +132,8 @@ namespace ArrangeContext.Core
                 if (parameter.IsOptional && parameter.DefaultValue == null && !mockOptionalParameters)
                     return new ContextInstance(null, null);
 
-                // if the parameter is a primitive type, we can ask the Activator to do it's job for us
-                if (parameter.ParameterType.IsPrimitive)
+                // if the parameter is a primitive or value type, we can ask the Activator to do it's job for us
+                if (parameter.ParameterType.IsPrimitive || parameter.ParameterType.IsValueType)
                 {
                     var instance = Activator.CreateInstance(parameter.ParameterType);
                     return new ContextInstance(instance, null);
