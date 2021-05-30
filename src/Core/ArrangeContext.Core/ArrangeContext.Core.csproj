@@ -15,7 +15,9 @@
 	  <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
 	  <PackageIcon>ArrangeContextLogo.png</PackageIcon>
 
-      <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+
+    <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
 	  <PublishRepositoryUrl>true</PublishRepositoryUrl>
 	  <EmbedUntrackedSources>true</EmbedUntrackedSources>
 	  <IncludeSymbols>true</IncludeSymbols>
@@ -24,6 +26,7 @@
 
 	<ItemGroup>
 		<None Include="../../../res/ArrangeContextLogo.png" Pack="true" Visible="false" PackagePath="" />
+    <None Include="../../../LICENSE" Pack="true" PackagePath="" />
 	</ItemGroup>
 
 	<ItemGroup>

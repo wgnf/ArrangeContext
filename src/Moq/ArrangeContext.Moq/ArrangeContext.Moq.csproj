@@ -15,6 +15,8 @@
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageIcon>ArrangeContextLogo.png</PackageIcon>
 
+    <PackageLicenseExpression>Unlicense</PackageLicenseExpression>
+
     <ContinuousIntegrationBuild>true</ContinuousIntegrationBuild>
     <PublishRepositoryUrl>true</PublishRepositoryUrl>
     <EmbedUntrackedSources>true</EmbedUntrackedSources>
@@ -22,9 +24,10 @@
     <SymbolPackageFormat>snupkg</SymbolPackageFormat>
   </PropertyGroup>
 
-<ItemGroup>
+  <ItemGroup>
     <None Include="../../../res/ArrangeContextLogo.png" Pack="true" Visible="false" PackagePath="" />
-</ItemGroup>
+    <None Include="../../../LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Moq" Version="4.8.0" />
