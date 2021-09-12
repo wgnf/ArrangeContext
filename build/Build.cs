@@ -25,9 +25,6 @@ public class Build : NukeBuild
     [Parameter("NuGet API Key", Name = "NUGET_API_KEY")]
     readonly string NuGetApiKey;
 
-    [Parameter("GitHub Access Token for Packages", Name = "GH_API_KEY")]
-    readonly string GitHubApiKey;
-
     AbsolutePath SourceDirectory => RootDirectory / "src";
 
     AbsolutePath BuildDirectory => RootDirectory / "build";
@@ -100,33 +97,22 @@ public class Build : NukeBuild
     Target Publish => _ => _
         .DependsOn(Pack)
         .Requires(() => !string.IsNullOrWhiteSpace(NuGetApiKey))
-        .Requires(() => !string.IsNullOrWhiteSpace(GitHubApiKey))
 
         .Executes(() =>
         {
             const string nugetSource = "https://api.nuget.org/v3/index.json";
-            const string githubSource = "https://nuget.pkg.github.com/OWNER/index.json";
 
             var packages = (BuildDirectory / ".output/Packages").GlobFiles("*.nupkg", "*.snupkg");
 
             foreach (var package in packages)
             {
-                using var block = Logger.Block($"Publishing {package}");
-                Logger.Info("... to NuGet");
+                Logger.Info($"Publishing {package}");
                 DotNetNuGetPush(s => s
                     .SetApiKey(NuGetApiKey)
                     .SetSymbolApiKey(NuGetApiKey)
                     .SetTargetPath(package)
                     .SetSource(nugetSource)
                     .SetSymbolSource(nugetSource));
-
-                Logger.Info("... to GitHub");
-                DotNetNuGetPush(s => s
-                    .SetApiKey(GitHubApiKey)
-                    .SetSymbolApiKey(GitHubApiKey)
-                    .SetTargetPath(package)
-                    .SetSource(githubSource)
-                    .SetSymbolSource(githubSource));
             }
         });
 }
