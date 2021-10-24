@@ -3,7 +3,7 @@
 [![GitHub license](https://img.shields.io/badge/License-Unlicense-blue.svg)](LICENSE)
 [![GitHub stars](https://img.shields.io/github/stars/wgnf/ArrangeContext?style=social)](https://github.com/wgnf/ArrangeContext/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/wgnf/ArrangeContext?style=social)](https://github.com/wgnf/ArrangeContext/network/members)
-[![GitHub watchers](https://img.shields.io/github/watchers/Owgnf/ArrangeContext?style=social)](https://github.com/wgnf/ArrangeContext/watchers)  
+[![GitHub watchers](https://img.shields.io/github/watchers/wgnf/ArrangeContext?style=social)](https://github.com/wgnf/ArrangeContext/watchers)  
 [![Latest Release Core](https://img.shields.io/nuget/v/ArrangeContext.Core?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Core/)
 [![Downloads Core](https://img.shields.io/nuget/dt/ArrangeContext.Core?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Core/)
 
