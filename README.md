@@ -1,11 +1,12 @@
 # :keyboard: ArrangeContext
 
 [![GitHub license](https://img.shields.io/badge/License-Unlicense-blue.svg)](LICENSE)
+[![Uses SemVer 2.0.0](https://img.shields.io/badge/Uses%20SemVer-2.0.0-green)](https://semver.org/spec/v2.0.0.html)
+[![Latest Release Core](https://img.shields.io/nuget/v/ArrangeContext.Core)](https://www.nuget.org/packages/ArrangeContext.Core/)
+[![Downloads Core](https://img.shields.io/nuget/dt/ArrangeContext.Core)](https://www.nuget.org/packages/ArrangeContext.Core/)  
 [![GitHub stars](https://img.shields.io/github/stars/wgnf/ArrangeContext?style=social)](https://github.com/wgnf/ArrangeContext/stargazers)
 [![GitHub forks](https://img.shields.io/github/forks/wgnf/ArrangeContext?style=social)](https://github.com/wgnf/ArrangeContext/network/members)
 [![GitHub watchers](https://img.shields.io/github/watchers/wgnf/ArrangeContext?style=social)](https://github.com/wgnf/ArrangeContext/watchers)  
-[![Latest Release Core](https://img.shields.io/nuget/v/ArrangeContext.Core?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Core/)
-[![Downloads Core](https://img.shields.io/nuget/dt/ArrangeContext.Core?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Core/)
 
 :keyboard: .NET C#: Simple Tool to automatically initialize your system-under-test with mocked instances.  
 Inspired by [NEdifis](https://github.com/awesome-inc/NEdifis) and [AutoFixture](https://github.com/AutoFixture/AutoFixture)
@@ -36,10 +37,10 @@ If you add a new Parameter with `ISomeService5` to your `SystemUnderTest`, in th
 
 |Framework ||
 |----------|---------|
-|[Moq](https://github.com/moq/moq4)|[![Latest Release Moq](https://img.shields.io/nuget/v/ArrangeContext.Moq?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Moq/) [![Downloads Moq](https://img.shields.io/nuget/dt/ArrangeContext.Moq?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.Moq/)|
-|[NSubstitute](https://github.com/nsubstitute/NSubstitute)|[![Latest Release NSubstitute](https://img.shields.io/nuget/v/ArrangeContext.NSubstitute?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.NSubstitute/) [![Downloads NSubstitute](https://img.shields.io/nuget/dt/ArrangeContext.NSubstitute?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.NSubstitute/)|
-|[RhinoMocks](https://github.com/hibernating-rhinos/rhino-mocks)|[![Latest Release Rhino Mocks](https://img.shields.io/nuget/v/ArrangeContext.RhinoMocks?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.RhinoMocks/) [![Downloads Rhino Mocks](https://img.shields.io/nuget/dt/ArrangeContext.RhinoMocks?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.RhinoMocks/)|
-|[FakeItEasy](https://github.com/FakeItEasy/FakeItEasy)|[![Latest Release FakeItEasy](https://img.shields.io/nuget/v/ArrangeContext.FakeItEasy?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.FakeItEasy/) [![Downloads FakeItEasy](https://img.shields.io/nuget/dt/ArrangeContext.FakeItEasy?style=for-the-badge)](https://www.nuget.org/packages/ArrangeContext.FakeItEasy/)|
+|[Moq](https://github.com/moq/moq4)|[![Latest Release Moq](https://img.shields.io/nuget/v/ArrangeContext.Moq)](https://www.nuget.org/packages/ArrangeContext.Moq/) [![Downloads Moq](https://img.shields.io/nuget/dt/ArrangeContext.Moq)](https://www.nuget.org/packages/ArrangeContext.Moq/)|
+|[NSubstitute](https://github.com/nsubstitute/NSubstitute)|[![Latest Release NSubstitute](https://img.shields.io/nuget/v/ArrangeContext.NSubstitute)](https://www.nuget.org/packages/ArrangeContext.NSubstitute/) [![Downloads NSubstitute](https://img.shields.io/nuget/dt/ArrangeContext.NSubstitute)](https://www.nuget.org/packages/ArrangeContext.NSubstitute/)|
+|[RhinoMocks](https://github.com/hibernating-rhinos/rhino-mocks)|[![Latest Release Rhino Mocks](https://img.shields.io/nuget/v/ArrangeContext.RhinoMocks)](https://www.nuget.org/packages/ArrangeContext.RhinoMocks/) [![Downloads Rhino Mocks](https://img.shields.io/nuget/dt/ArrangeContext.RhinoMocks)](https://www.nuget.org/packages/ArrangeContext.RhinoMocks/)|
+|[FakeItEasy](https://github.com/FakeItEasy/FakeItEasy)|[![Latest Release FakeItEasy](https://img.shields.io/nuget/v/ArrangeContext.FakeItEasy)](https://www.nuget.org/packages/ArrangeContext.FakeItEasy/) [![Downloads FakeItEasy](https://img.shields.io/nuget/dt/ArrangeContext.FakeItEasy)](https://www.nuget.org/packages/ArrangeContext.FakeItEasy/)|
 
 ---
 
