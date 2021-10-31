@@ -36,7 +36,7 @@ namespace ArrangeContext.Moq
         public void Use<T>(Mock<T> mockedInstance) where T : class
         {
             var parameter = GetParameter<T>();
-            ReplaceInstance(parameter, mockedInstance, mockedInstance);
+            ReplaceInstance(parameter, mockedInstance.Object, mockedInstance);
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace ArrangeContext.Moq
         public void Use<T>(Mock<T> mockedInstance, string parameterName) where T : class
         {
             var parameter = GetParameter(parameterName);
-            ReplaceInstance(parameter, mockedInstance, mockedInstance);
+            ReplaceInstance(parameter, mockedInstance.Object, mockedInstance);
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace ArrangeContext.Moq
                 // the generic Type is not known at compile-time
 
                 var classType = typeof(Mock<>);
-                var typeParams = new Type[] { parameter.ParameterType };
+                var typeParams = new[] { parameter.ParameterType };
                 var constructedType = classType.MakeGenericType(typeParams);
 
                 var mockedInstance = (Mock)Activator.CreateInstance(constructedType);
