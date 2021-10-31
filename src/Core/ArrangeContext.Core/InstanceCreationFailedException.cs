@@ -17,7 +17,7 @@ namespace ArrangeContext.Core
         ///     Creates a new instance of <see cref="InstanceCreationFailedException"/>
         /// </summary>
         /// <param name="parameterName">The name of the parameter for which the creation failed</param>
-        public InstanceCreationFailedException(string parameterName) : base($"Instance-Creation failed for the Parameter {parameterName}. Please check the InnerException for more details.")
+        public InstanceCreationFailedException(string parameterName) : base($"Instance-Creation failed for the Parameter {parameterName}.")
         {
             ParameterName = parameterName;
         }
@@ -27,7 +27,7 @@ namespace ArrangeContext.Core
         /// </summary>
         /// <param name="parameterName">The name of the parameter for which the creation failed</param>
         /// <param name="inner">The Inner exception</param>
-        public InstanceCreationFailedException(string parameterName, Exception inner) : base($"Instance-Creation for the Parameter {parameterName}. Please check the InnerException for more details.", inner)
+        public InstanceCreationFailedException(string parameterName, Exception inner) : base($"Instance-Creation failed for the Parameter {parameterName}. Please check the InnerException for more details.", inner)
         {
             ParameterName = parameterName;
         }
