@@ -38,6 +38,18 @@ namespace ArrangeContext.Moq
             var parameter = GetParameter<T>();
             ReplaceInstance(parameter, mockedInstance.Object, mockedInstance);
         }
+        
+        /// <summary>
+        ///     Replaces the previously generated parameter indicated by <typeparamref name="T"/> with the provided <paramref name="mockedInstance"/>
+        /// </summary>
+        /// <typeparam name="T">Indicates the type of the parameter that should be replaced</typeparam>
+        /// <param name="mockedInstance">The new instance for the parameter with the type <typeparamref name="T"/></param>
+        public void Use<T>(T mockedInstance) where T : class
+        {
+            var parameter = GetParameter<T>();
+            // hack: this is dirty, but it's fine 'for now'
+            ReplaceInstance(parameter, mockedInstance, null);
+        }
 
         /// <summary>
         ///     Replaces the previously generated parameter indicated by the <paramref name="parameterName"/> with the provided <paramref name="mockedInstance"/>
@@ -49,6 +61,19 @@ namespace ArrangeContext.Moq
         {
             var parameter = GetParameter(parameterName);
             ReplaceInstance(parameter, mockedInstance.Object, mockedInstance);
+        }
+
+        /// <summary>
+        ///     Replaces the previously generated parameter indicated by the <paramref name="parameterName"/> with the provided <paramref name="mockedInstance"/>
+        /// </summary>
+        /// <typeparam name="T">Indicates the type of the parameter that should be replaced</typeparam>
+        /// <param name="mockedInstance">The new instance for the parameter with the name <paramref name="parameterName"/></param>
+        /// <param name="parameterName">The name of the parameter that should be replaced</param>
+        public void Use<T>(T mockedInstance, string parameterName) where T : class
+        {
+            var parameter = GetParameter(parameterName);
+            // hack: this is dirty, but it's fine 'for now'
+            ReplaceInstance(parameter, mockedInstance, null);
         }
 
         /// <summary>
