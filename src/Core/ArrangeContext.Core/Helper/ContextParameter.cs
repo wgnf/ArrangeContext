@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Reflection;
 
 namespace ArrangeContext.Core.Helper
 {
     /// <summary>
-    ///     Container that holds information about a Constructor-Parmater for an ArrangeContext
+    ///     Container that holds information about a Constructor-Parameter for an ArrangeContext
     /// </summary>
     [ExcludeFromCodeCoverage] // simple POCO
     public class ContextParameter
@@ -12,20 +13,17 @@ namespace ArrangeContext.Core.Helper
         /// <summary>
         ///     Creates a new instance of <see cref="ContextParameter"/>
         /// </summary>
-        /// <param name="parameterType">The type of the parameter</param>
-        /// <param name="name">The name of the parameter</param>
-        /// <param name="instance">The <see cref="ContextInstance"/> for that parameter</param>
+        /// <param name="parameterInfo">The <see cref="ParameterInfo"/> that is the "base" for that parameter</param>
+        /// <param name="instance">The <see cref="Helper.ContextInstance"/> for that parameter</param>
         public ContextParameter(
-            Type parameterType, 
-            string name, 
+            ParameterInfo parameterInfo,
             ContextInstance instance)
         {
-            if (string.IsNullOrWhiteSpace(name))
-                throw new ArgumentException("Value cannot be null or whitespace.", nameof(name));
-            Name = name;
+            ContextInstance = instance ?? throw new ArgumentNullException(nameof(instance));
+            ParameterInfo = parameterInfo ?? throw new ArgumentNullException(nameof(parameterInfo));
 
-            Type = parameterType ?? throw new ArgumentNullException(nameof(parameterType));
-            Instance = instance ?? throw new ArgumentNullException(nameof(instance));
+            Type = parameterInfo.ParameterType;
+            Name = parameterInfo.Name;
         }
 
         /// <summary>
@@ -37,10 +35,15 @@ namespace ArrangeContext.Core.Helper
         ///     The Parameter-Name
         /// </summary>
         public string Name { get; }
+        
+        /// <summary>
+        ///     The <see cref="ParameterInfo"/> that is the base for this Parameter
+        /// </summary>
+        public ParameterInfo ParameterInfo { get; }
 
         /// <summary>
-        ///     The <see cref="ContextInstance"/> for that Parameter
+        ///     The <see cref="Helper.ContextInstance"/> for that Parameter
         /// </summary>
-        public ContextInstance Instance { get; set; }
+        public ContextInstance ContextInstance { get; }
     }
 }

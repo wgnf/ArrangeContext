@@ -40,7 +40,10 @@
         public T For<T>() where T : class
         {
             var parameter = GetParameter<T>();
-            var determinedMockedInstance = parameter.Instance.MockedInstance;
+            if (!parameter.ContextInstance.IsInitialized())
+                InitializeContextParameter(parameter);
+            
+            var determinedMockedInstance = parameter.ContextInstance.MockedInstance;
             return (T)determinedMockedInstance;
         }
 
@@ -53,7 +56,10 @@
         public T For<T>(string parameterName) where T : class
         {
             var parameter = GetParameter(parameterName);
-            var determinedMockedInstance = parameter.Instance.MockedInstance;
+            if (!parameter.ContextInstance.IsInitialized())
+                InitializeContextParameter(parameter);
+            
+            var determinedMockedInstance = parameter.ContextInstance.MockedInstance;
             return (T)determinedMockedInstance;
         }
     }
