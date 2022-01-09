@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace ArrangeContext.Core.Helper
+﻿namespace ArrangeContext.Core.Helper
 {
     /// <summary>
     ///     Container that holds both an instance of parameter and a mocked instance (i.e. Mock{Something})
@@ -29,5 +27,14 @@ namespace ArrangeContext.Core.Helper
         ///     The mocked instance
         /// </summary>
         public object MockedInstance { get; set; }
+
+        /// <summary>
+        ///     Determines if the <see cref="ContextInstance"/> has been initialized
+        /// </summary>
+        /// <returns>Whether or not the <see cref="ContextInstance"/> has been initialized</returns>
+        public bool IsInitialized()
+        {
+            return Instance != null && MockedInstance != null;
+        }
     }
 }

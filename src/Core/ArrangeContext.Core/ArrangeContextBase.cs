@@ -1,9 +1,8 @@
-﻿using ArrangeContext.Core.Helper;
-using ArrangeContext.Core.Helper.Contracts;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using ArrangeContext.Core.Helper;
 
 namespace ArrangeContext.Core
 {
@@ -13,12 +12,9 @@ namespace ArrangeContext.Core
     /// <typeparam name="TContext">The Context that is worked with</typeparam>
     public abstract class ArrangeContextBase<TContext> where TContext : class
     {
-        private readonly IReflectionHelper _reflectionHelper;
-
         private readonly IList<ContextParameter> _contextParameters;
 
         private readonly bool _includeOptionalParameters;
-        private bool _initialized = false;
 
         /// <summary>
         ///     Creates a new instance of the Arrange-Context
@@ -29,19 +25,34 @@ namespace ArrangeContext.Core
             _includeOptionalParameters = includeOptionalParameters;
 
             _contextParameters = new List<ContextParameter>();
-            _reflectionHelper = new ReflectionHelper();
+            var reflectionHelper = new ReflectionHelper();
+
+            var constructor = reflectionHelper.GetConstructor<TContext>();
+            var constructorParameters = reflectionHelper.GetParametersFor(constructor);
+
+            /*
+             * NOTE:
+             * We're initializing the context-parameters here so that we have a "blueprint" of all parameters
+             * that we need in the correct order (needed for creating the instance of 'TContext' in 'Build()'),
+             * leaving the Properties of 'ContextInstance' null, so we can figure out which missing parameters have
+             * to be mocked
+             */
+            foreach (var constructorParameter in constructorParameters)
+                _contextParameters.Add(new ContextParameter(
+                    constructorParameter,
+                    new ContextInstance(null, null)));
         }
 
         /// <summary>
         ///     Builds the Context with substituted ctor-Parameters
         /// </summary>
-        /// <returns>A new instance of <typeparamref name="TContext"/> with substituted ctor-Parameters</returns>
+        /// <returns>A new instance of <typeparamref name="TContext" /> with substituted ctor-Parameters</returns>
         public TContext Build()
         {
-            ConsiderInitialization();
+            InitializeMissingParameters();
 
             var parameterArray = _contextParameters
-                .Select(p => p.Instance.Instance)
+                .Select(p => p.ContextInstance.Instance)
                 .ToArray();
             var instance = Activator.CreateInstance(typeof(TContext), parameterArray);
             return (TContext)instance;
@@ -55,8 +66,6 @@ namespace ArrangeContext.Core
         /// <returns>The found parameter</returns>
         protected ContextParameter GetParameter<T>()
         {
-            ConsiderInitialization();
-
             var parameter = _contextParameters.FirstOrDefault(p => p.Type == typeof(T));
             if (parameter == null)
                 throw new ArgumentException(
@@ -71,8 +80,6 @@ namespace ArrangeContext.Core
         /// <returns>The found parameter</returns>
         protected ContextParameter GetParameter(string parameterName)
         {
-            ConsiderInitialization();
-
             var parameter = _contextParameters.FirstOrDefault(p =>
                 p.Name.Equals(parameterName, StringComparison.InvariantCultureIgnoreCase));
             if (parameter == null)
@@ -82,7 +89,7 @@ namespace ArrangeContext.Core
         }
 
         /// <summary>
-        ///     Replaces the <paramref name="parameterToReplace"/> with another provided instance
+        ///     Replaces the <paramref name="parameterToReplace" /> with another provided instance
         /// </summary>
         /// <param name="parameterToReplace">The parameter to replace</param>
         /// <param name="instance">The instance to replace the current parameter with</param>
@@ -92,16 +99,8 @@ namespace ArrangeContext.Core
             object instance,
             object mockedInstance)
         {
-            ConsiderInitialization();
-
-            var index = _contextParameters.IndexOf(parameterToReplace);
-            _contextParameters.Remove(parameterToReplace);
-
-            var newParameter = new ContextParameter(
-                parameterToReplace.Type,
-                parameterToReplace.Name,
-                new ContextInstance(instance, mockedInstance));
-            _contextParameters.Insert(index, newParameter);
+            parameterToReplace.ContextInstance.Instance = instance;
+            parameterToReplace.ContextInstance.MockedInstance = mockedInstance;
         }
 
         /// <summary>
@@ -110,51 +109,31 @@ namespace ArrangeContext.Core
         /// <param name="parameter">The parameter that should be mocked</param>
         /// <returns>The mocked instance</returns>
         protected abstract ContextInstance CreateMockedInstance(ParameterInfo parameter);
-
-        private void ConsiderInitialization()
+        
+        /// <summary>
+        ///     Initializes the provided <see cref="ContextParameter"/> with a mock
+        /// </summary>
+        /// <param name="contextParameter">The <see cref="ContextParameter"/> to initialize</param>
+        protected void InitializeContextParameter(ContextParameter contextParameter)
         {
-            if (_initialized) return;
-
-            try
-            {
-                var parameters = GetParameters();
-                InitializeContextParameters(parameters);
-            }
-            finally
-            {
-                _initialized = true;
-            }
+            var instance = CreateContextInstance(contextParameter.ParameterInfo);
+            contextParameter.ContextInstance.Instance = instance.Instance;
+            contextParameter.ContextInstance.MockedInstance = instance.MockedInstance;
         }
 
-        private IEnumerable<ParameterInfo> GetParameters()
+        private void InitializeMissingParameters()
         {
-            var constructor = _reflectionHelper.GetConstructor<TContext>();
-            var parameters = _reflectionHelper.GetParametersFor(constructor);
-
-            return parameters;
-        }
-
-        private void InitializeContextParameters(IEnumerable<ParameterInfo> parameters)
-        {
-            foreach (var parameter in parameters)
+            foreach (var parameter in _contextParameters)
             {
-                var contextParameter = InitializeContextParameterFor(parameter);
-                _contextParameters.Add(contextParameter);
+                // we only want to initialize not initialized parameters here...
+                if (parameter.ContextInstance?.Instance != null)
+                    continue;
+
+                InitializeContextParameter(parameter);
             }
         }
 
-        private ContextParameter InitializeContextParameterFor(ParameterInfo parameter)
-        {
-            var instance = CreateInstance(parameter);
-            var contextParameter = new ContextParameter(
-                parameter.ParameterType,
-                parameter.Name,
-                instance);
-
-            return contextParameter;
-        }
-
-        private ContextInstance CreateInstance(ParameterInfo parameter)
+        private ContextInstance CreateContextInstance(ParameterInfo parameter)
         {
             try
             {
@@ -182,7 +161,7 @@ namespace ArrangeContext.Core
             }
         }
 
-        private ContextInstance CreateInstanceFromActivator(Type type)
+        private static ContextInstance CreateInstanceFromActivator(Type type)
         {
             var instance = Activator.CreateInstance(type);
             return new ContextInstance(instance, null);
