@@ -1,6 +1,6 @@
 # :keyboard: ArrangeContext
 
-[![GitHub license](https://img.shields.io/badge/License-Unlicense-blue.svg)](LICENSE)
+[![GitHub license](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Uses SemVer 2.0.0](https://img.shields.io/badge/Uses%20SemVer-2.0.0-green)](https://semver.org/spec/v2.0.0.html)
 [![Latest Release Core](https://img.shields.io/nuget/v/ArrangeContext.Core)](https://www.nuget.org/packages/ArrangeContext.Core/)
 [![Downloads Core](https://img.shields.io/nuget/dt/ArrangeContext.Core)](https://www.nuget.org/packages/ArrangeContext.Core/)  
